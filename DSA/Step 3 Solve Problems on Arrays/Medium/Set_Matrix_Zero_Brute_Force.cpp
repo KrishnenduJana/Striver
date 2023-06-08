@@ -9,7 +9,7 @@ Output: [[1,0,1],[0,0,0],[1,0,1]]
 
 Explanation: Since matrix[2][2]=0.Therfore the 2nd column and 2nd row wil be set to 0.*/
 
-// Brute Force
+// Better Solution (Not Optimal) - O(N*M) time complexity and max[O(N), O(M)] space complexity
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -36,14 +36,14 @@ vector<vector<int>> SetMatrixZero(vector<vector<int>> matrix)
 
     for(int i = 0; i<m; i++)
     {
-        for(int j = 0; j<markcol.size(); j++)
+        for(auto j : markcol)
         {
             matrix[i][j] = 0;
         }
     }
 
     
-    for(int i = 0; i<markrow.size(); i++)
+    for(auto i : markrow)
     {
         for(int j = 0; j<n; j++)
         {
@@ -67,10 +67,16 @@ int main()
         {1,1,1}
     };
 
+    int m = vect.size();
+    int n = vect[0].size();
+
+    // cout<<n<<endl;
+    // cout<<m<<endl;
+
      
-    for(int i = 0; i<vect.size(); i++)
+    for(int i = 0; i<m; i++)
     {
-        for(int j = 0; j<vect[0].size(); j++)
+        for(int j = 0; j<n; j++)
         {
             cout<<vect[i][j]<<" ";
         }
@@ -81,12 +87,12 @@ int main()
     
 
     vector<vector<int>> matrix = SetMatrixZero(vect);
-    int m = matrix.size();
-    int n = matrix[0].size();
+    int m1 = matrix.size();
+    int n1 = matrix[0].size();
     
-    for(int i = 0; i<m; i++)
+    for(int i = 0; i<m1; i++)
     {
-        for(int j = 0; j<n; j++)
+        for(int j = 0; j<n1; j++)
         {
             cout<<matrix[i][j]<<" ";
         }
